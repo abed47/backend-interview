@@ -36,41 +36,41 @@ Download the image, resize to 50x50 pixels, and return the resulting thumbnail.
 
 
 #### Code Requirements 
-Include a test suite for the microservice.
-We recommend using Mocha (https://mochajs.org/).
-API should reject invalid request inputs.  Test the edge cases!
-Use modern javascript ES6 syntax.
+- Include a test suite for the microservice.
+- We recommend using Mocha (https://mochajs.org/).
+- API should reject invalid request inputs.  Test the edge cases!
+- Use modern javascript ES6 syntax.
 
 
 #### Other Requirements 
-Use Git for version control, and host the project in a Github repository.
-Project should contain documentation with setup and usage instructions.
-Project should install all dependencies with “npm install”, should start the server with “npm start”, and should run the test suite with “npm test”.
+- Use Git for version control, and host the project in a Github repository.
+- Project should contain documentation with setup and usage instructions.
+- Project should install all dependencies with “npm install”, should start the server with “npm start”, and should run the test suite with “npm test”.
 
 
 #### Bonus Points 
-100% code coverage in test suite.
-We recommend using Istanbul (https://github.com/gotwarlost/istanbul) to generate code test coverage reports.
-Extra Documentation
-Include JSdoc comments and/or Swagger specifications to impress us.
-Logging / Monitoring
-Integrate a centralized app logging/monitoring system.
-Really, please just don’t use “console.log” as the primary debugging/logging tool.
-Javascript Style and Linting
-Use a javascript linter, along with a linting npm script. We like clean code.
-Dockerize
-Include a working Dockerfile with the app directory.
-Push a docker image to public DockerHub, and share the link
+- 100% code coverage in test suite.
+- We recommend using Istanbul (https://github.com/gotwarlost/istanbul) to generate code test coverage reports.
+- Extra Documentation
+- Include JSdoc comments and/or Swagger specifications to impress us.
+- Logging / Monitoring
+- Integrate a centralized app logging/monitoring system.
+- Really, please just don’t use “console.log” as the primary debugging/logging tool.
+- Javascript Style and Linting
+- Use a javascript linter, along with a linting npm script. We like clean code.
+- Dockerize
+- Include a working Dockerfile with the app directory.
+- Push a docker image to public DockerHub, and share the link
 
 
 #### How we will judge the task 
-Project organization and code readability (40%)
-API functionality correctness (15%)
-Input validation and error handling (15%)
-API speed and efficiency (10%)
-Documentation (10%)
-Unit Test Coverage (10%)
-Bonus Points (up to +20%)
+- Project organization and code readability (40%)
+- API functionality correctness (15%)
+- Input validation and error handling (15%)
+- API speed and efficiency (10%)
+- Documentation (10%)
+- Unit Test Coverage (10%)
+- Bonus Points (up to +20%)
 
 
 #### Important
