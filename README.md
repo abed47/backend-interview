@@ -46,6 +46,12 @@ Download the image, resize to 50x50 pixels, and return the resulting thumbnail.
 - Use Git for version control, and host the project in a Github repository.
 - Project should contain documentation with setup and usage instructions.
 - Project should install all dependencies with “npm install”, should start the server with “npm start”, and should run the test suite with “npm test”.
+- Really, please just don’t use “console.log” as the primary debugging/logging tool.
+- Javascript Style and Linting
+- Use a javascript linter, along with a linting npm script. We like clean code.
+- Dockerize
+- Include a working Dockerfile with the app directory.
+- Push a docker image to public DockerHub, and share the link
 
 
 #### Bonus Points 
@@ -55,12 +61,7 @@ Download the image, resize to 50x50 pixels, and return the resulting thumbnail.
 - Include JSdoc comments and/or Swagger specifications to impress us.
 - Logging / Monitoring
 - Integrate a centralized app logging/monitoring system.
-- Really, please just don’t use “console.log” as the primary debugging/logging tool.
-- Javascript Style and Linting
-- Use a javascript linter, along with a linting npm script. We like clean code.
-- Dockerize
-- Include a working Dockerfile with the app directory.
-- Push a docker image to public DockerHub, and share the link
+
 
 
 #### How we will judge the task 
