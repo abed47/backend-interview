@@ -1,0 +1,22 @@
+{
+  "name": "interview-task-one",
+  "version": "1.0.0",
+  "description": "stateless microservice in Nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abed47/interview-backend-test.git"
+  },
+  "author": "abdull-rahman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abed47/interview-backend-test/issues"
+  },
+  "homepage": "https://github.com/abed47/interview-backend-test#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
