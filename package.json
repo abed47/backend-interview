@@ -1,24 +1,22 @@
 {
-  "name": "interview-task-one",
+  "name": "interview-backend-task",
   "version": "1.0.0",
-  "description": "stateless microservice in Nodejs",
+  "description": "node js with jwt auth",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "start test"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/abed47/backend-task.git"
+    "url": "git+https://github.com/hackerbay/interview-backend-task.git"
   },
   "author": "abdull-rahman",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/abed47/interview-backend-test/issues"
+    "url": "https://github.com/hackerbay/interview-backend-task/issues"
   },
-  "homepage": "https://github.com/abed47/interview-backend-test#readme",
+  "homepage": "https://github.com/hackerbay/interview-backend-task#readme",
   "dependencies": {
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "mongoose": "^5.9.3"
+    "express": "^4.17.1"
   }
 }
