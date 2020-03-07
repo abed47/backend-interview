@@ -21,9 +21,8 @@ class Auth{
 
            const {error} = await validationSchema.validate(req.body)
            if(error) return res.status(400).send(error.details[0].message);
-           res.send('register form')
              const user = new User({
-                 name: req.body.fullname,
+                 fullname: req.body.fullname,
                  user_name: req.body.user_name,
                  password: req.body.password,
                  date:req.body.date
@@ -31,7 +30,7 @@ class Auth{
 
              try{
                  const addedUser = await user.save();
-                 res.send(addedUser);
+                 res.status(200).send(addedUser);
              }catch(err){
                  res.status(400).send(err);
              }
