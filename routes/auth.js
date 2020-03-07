@@ -4,13 +4,15 @@ module.exports = class Auth{
     }
 
     initRoutes(){
-        this.router.get('/login',(req,res) => {
+        this.router.post('/login',(req,res) => {
             res.send('login module')
         })
 
         this.router.post('/register',(req,res) => {
             res.send('register module');
         })
+
+        return this.router;
     }
     
 }
