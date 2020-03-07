@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         min: 6,
-        max: 60
+        max: 100
     },
     date:{
         type: Date,
