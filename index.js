@@ -16,6 +16,7 @@ mongoose.connect(
 
 
 const authRoutes = new auth(express);
+app.use(express.json());
 
 /**
  * creates middleware for the auth route
@@ -27,7 +28,6 @@ const authRoutes = new auth(express);
  */
 app.use('/api/user',authRoutes.initRoutes())
 
-app.use(express.json());
 
 app.listen(3000, () => {
     console.log('server started');
