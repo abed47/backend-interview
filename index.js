@@ -8,6 +8,10 @@ const expressLayouts = require('express-ejs-layouts');
 const auth = require('./routes/auth');
 const postsRoute = require('./routes/post');
 
+//adding layout support for ejs
+app.set('view engine','ejs');
+app.use(expressLayouts);
+
 dotenv.config();
 
 mongoose.connect(
@@ -31,10 +35,6 @@ app.use('/api/posts',postsRoute);
  * 
  */
 app.use('/api/user',authRoutes.initRoutes())
-
-
-app.use(expressLayouts);
-app.set('view engine','ejs');
 
 app.listen(3000, () => {
     console.log('server started');
