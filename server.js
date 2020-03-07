@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express();
-const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const expressLayouts = require('express-ejs-layouts');
 
 //Import Routes
 const auth = require('./routes/auth');
@@ -32,6 +32,9 @@ app.use('/api/posts',postsRoute);
  */
 app.use('/api/user',authRoutes.initRoutes())
 
+
+app.use(expressLayouts);
+app.set('view engine','ejs');
 
 app.listen(3000, () => {
     console.log('server started');
