@@ -1,9 +1,12 @@
 const express = require('express');
 const app = express();
 const jwt = require('jsonwebtoken');
-const auth = require('./routes/auth');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+
+//Import Routes
+const auth = require('./routes/auth');
+const postsRoute = require('./routes/post');
 
 dotenv.config();
 
@@ -17,6 +20,7 @@ mongoose.connect(
 
 const authRoutes = new auth(express);
 app.use(express.json());
+app.use('/api/posts',postsRoute);
 
 /**
  * creates middleware for the auth route
