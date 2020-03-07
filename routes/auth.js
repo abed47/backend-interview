@@ -1,5 +1,5 @@
 const User = require('../models/User');
-const registerValidation = require('../validation');
+const {registerValidation, loginValidation} = require('../validation');
 
 class Auth{
     constructor(expressApp){
@@ -13,9 +13,29 @@ class Auth{
 
         this.router.post('/register', async (req,res) => {
 
+            /**
+             * 
+             * validation user inputs
+             * 
+             * @param - request body
+             * 
+             * @returns - error object with details and message
+             * 
+             */
             const {error} = await registerValidation(req.body);
-
             if(error) return res.status(400).send(error.details[0].message);
+
+            /**
+             * 
+             * check if user exists in the database and returns the functions
+             * 
+             * @param - condition
+             * 
+             * @returns - boolean
+             * 
+             */
+            const userExists = await User.findOne({user_name: req.body.user_name})
+            if(userExists) return res.status(400).send("username already exists");
 
              const user = new User({
                  fullname: req.body.fullname,
