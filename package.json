@@ -4,6 +4,7 @@
   "description": "node js with jwt auth",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon server.js",
     "test": "start test"
   },
   "repository": {
@@ -22,6 +23,8 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.3"
+    "mg": "^1.1.0",
+    "mongoose": "^5.9.3",
+    "nodemon": "^2.0.2"
   }
 }
