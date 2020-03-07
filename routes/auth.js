@@ -8,8 +8,42 @@ class Auth{
     }
 
     initRoutes(){
-        this.router.post('/login',(req,res) => {
-            res.send('login module')
+        this.router.post('/login', async (req,res) => {
+            /**
+             * 
+             * validation user inputs
+             * 
+             * @param - request body
+             * 
+             * @returns - error object with details and message
+             * 
+             */
+            const {error} = await loginValidation(req.body);
+            if(error) return res.status(400).send(error.details[0].message);
+
+            /**
+             * 
+             * check if user exists in the database
+             * 
+             * @param - condition
+             * 
+             * @returns - login response
+             * 
+             */
+            const user = await User.findOne({user_name: req.body.user_name})
+            if(!user) return res.status(400).send('User Does not exist');
+
+            /**
+             * 
+             * check if the password matches
+             * 
+             * @params - retrieved password - user input
+             * 
+             */
+            const validPassword = await bcrypt.compare(req.body.password, user.password);
+            if(!validPassword) return res.status(400).send('Invalid password');
+
+            res.status(200).send('logged in');
         })
 
         this.router.post('/register', async (req,res) => {
