@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const {registerValidation, loginValidation} = require('../validation');
+const bcrypt = require('bcryptjs');
 
 class Auth{
     constructor(expressApp){
@@ -37,10 +38,18 @@ class Auth{
             const userExists = await User.findOne({user_name: req.body.user_name})
             if(userExists) return res.status(400).send("username already exists");
 
+            /**
+             * 
+             * hashing password
+             * 
+             */
+            const salt = await bcrypt.genSalt(10);
+            const hashedPassword = await bcrypt.hash(req.body.password,salt);
+
              const user = new User({
                  fullname: req.body.fullname,
                  user_name: req.body.user_name,
-                 password: req.body.password,
+                 password: hashedPassword,
                  date:req.body.date
              });
 
