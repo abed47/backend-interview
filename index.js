@@ -3,9 +3,11 @@ const app = express();
 const jwt = require('jsonwebtoken');
 const auth = require('./routes/auth');
 
-app.get('/uplaod',(req, res) => {
-    
-});
+const authRoutes = new auth(express);
+
+app.use('/api/user',authRoutes.initRoutes())
+
+app.use(express.json());
 
 app.listen(3000, () => {
     console.log('server started');
