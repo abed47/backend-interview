@@ -1,6 +1,10 @@
 const User = require('../models/User');
 const {registerValidation, loginValidation} = require('../validation');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 class Auth{
     constructor(expressApp){
@@ -43,7 +47,10 @@ class Auth{
             const validPassword = await bcrypt.compare(req.body.password, user.password);
             if(!validPassword) return res.status(400).send('Invalid password');
 
-            res.status(200).send('logged in');
+            //creating and signing tocken
+            const token = jwt.sign({_id: user._id}, process.env.TOKEN_SECRET);
+            res.header('auth-token',token)
+            res.status(200).send("logged in");
         })
 
         this.router.post('/register', async (req,res) => {
