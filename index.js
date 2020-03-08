@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const expressLayouts = require('express-ejs-layouts');
 
 //Import Routes
 const auth = require('./routes/auth');
@@ -12,10 +11,6 @@ const viewRoutes = require('./routes/viewsRoutes');
 //dot env init
 dotenv.config();
 
-
-//adding express layouts to the app rendreing
-app.use(expressLayouts);
-app.set('view engine','ejs');
 
 //db connection init
 mongoose.connect(
