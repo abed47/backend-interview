@@ -1,1 +1,23 @@
-<h1 class="mt-5">index works</h1>
+<div class=" row m-5 justify-content-center">
+    <div class="card col-6 ">
+        <div class="card-header bg-white text-center">
+        <p>Welcome to the test app</p>
+        <img src="https://scotch-res.cloudinary.com/image/upload/w_1050,q_auto:good,f_auto/media/1114/eLf0LpgROq0YVMHzUkdq_nodejs_logo.jpg" alt="node.js bg" class="w-100">
+        </div>
+        <div class="card-body text-center">
+            <button class="btn btn-primary round w-50" onclick="routeToLogin()">Login</button>
+            <p class="mt-3">dont have an account? register</p>
+            <button class="btn btn-outline-primary round w-50" onclick="routeToRegister()">Register</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function routeToLogin(){
+        window.location.replace('http://localhost:3000/login');
+    }
+
+    function routeToRegister(){
+        window.location.replace('http://localhost:3000/register');
+    }
+</script>

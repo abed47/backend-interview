@@ -1,0 +1,86 @@
+<div class=" row m-5 justify-content-center">
+    <div class="card col-6 ">
+        <div class="card-header bg-white text-center">
+        <p>Welcome to the test app</p>
+        <img src="https://scotch-res.cloudinary.com/image/upload/w_1050,q_auto:good,f_auto/media/1114/eLf0LpgROq0YVMHzUkdq_nodejs_logo.jpg" alt="node.js bg" class="w-100">
+        </div>
+        <div class="card-body text-center">
+            <div class="form-group text-left">
+                <label for="usernameInput">Username</label>
+                <input type="text" class="form-control" id="usernameInput" placeholder="UserName">
+              </div>
+              <div class="form-group text-left">
+                <label for="passwordInput">Password</label>
+                <input type="password" class="form-control" id="passwordInput" placeholder="Password">
+              </div>
+            <button class="btn btn-primary round w-50" onclick="login()">Login</button>
+        </div>
+    </div>
+</div>
+<div id="alertDiv">
+
+</div>
+<script>
+        
+    
+    /**
+     * 
+     * check if session storage has a token
+     * 
+     */
+     function checkLogged(){
+        if(sessionStorage.getItem('token') != null ){
+            window.location.replace('http://localhost:3000/home');
+        }
+    }
+
+    //invoke chek if logged in function
+    checkLogged();
+
+    function login(){
+        let username = document.getElementById('usernameInput');
+        let password = document.getElementById('passwordInput');
+        axios.post('http://localhost:3000/api/user/login',{
+            user_name: username.value,
+            password: password.value
+        }).then( res => {
+            this.handleRes(res)
+        }).catch(err => {
+            this.handleErr(err.response)
+        })
+    }
+
+    /**
+     * 
+     * hadle error
+     * 
+     * @param - msg, error message from server response
+     * 
+     */
+    function handleErr(msg){
+        let alertDiv = document.getElementById('alertDiv');
+        alertDiv.innerHTML = `
+        <div  class="alert alert-warning alert-dismissible fade show" role="alert">
+        <p id="alertBody">${msg.data}</p>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        `;
+    }
+
+
+    /**
+     *
+     * handle result from server
+     * 
+     * @param - res, respone from server
+     * 
+     * @ return - adds token to session storage
+     *  
+     */
+    function handleRes(res){
+       sessionStorage.setItem('token',res.headers['auth-token']);
+       window.location.replace('http://localhost:3000/home');
+    }
+</script>
