@@ -6,7 +6,6 @@ const dotenv = require('dotenv');
 //Import Routes
 const auth = require('./routes/auth');
 const postsRoute = require('./routes/post');
-const viewRoutes = require('./routes/viewsRoutes');
 
 //dot env init
 dotenv.config();
@@ -38,9 +37,6 @@ app.use('/api/posts',postsRoute);
  * 
  */
 app.use('/api/user',authRoutes.initRoutes())
-
-//add view routes to the app
-app.use(viewRoutes);
 
 
 app.listen(3000, () => {
