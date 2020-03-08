@@ -131,7 +131,7 @@ class Auth{
                 let rs = Fs.createReadStream(imgPath)
                 res.attachment(newImgName)
                 rs.pipe(res)
-                res.status(200).send('Download succesfull!');
+                res.status(200);
             }).catch(err =>{
                 console.log(err)
             })
