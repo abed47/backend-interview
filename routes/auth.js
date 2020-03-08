@@ -3,6 +3,10 @@ const {registerValidation, loginValidation} = require('../validation');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
+const axios = require('axios');
+const Fs = require('fs');
+const Path = require('path');
+const Jimp = require('jimp');
 
 dotenv.config();
 
@@ -51,7 +55,7 @@ class Auth{
             const token = jwt.sign({_id: user._id}, process.env.TOKEN_SECRET);
             res.header('auth-token',token)
             res.status(200).send("logged in");
-        })
+        });
 
         this.router.post('/register', async (req,res) => {
 
@@ -100,7 +104,38 @@ class Auth{
              }catch(err){
                  res.status(400).send(err);
              }
-        })
+        });
+
+        this.router.post('/resize', async (req,res) => {
+            const url = req.body.imgUrl
+            const imgName = new Date().getTime().toString()
+            const path = Path.resolve(__dirname, '../images', imgName+'.png')
+            const writer = Fs.createWriteStream(path)
+            axios.get(url,{responseType: 'stream'}).then( response => {
+                response.data.pipe(writer)
+                writer.on('open', () => {console.log('writing')})
+                writer.on('close', () => onWritingDone(res,path))
+            }).catch(err => {
+                res.send(err)
+            }) 
+        });
+
+        function onWritingDone(res,path){
+            let newImgName = new Date().getTime().toString() +"150x150.png"
+            const imgPath = Path.resolve(__dirname, '../images',newImgName);
+            Jimp.read(path)
+            .then(img => {
+                img.resize(256, 256) // resize
+                .quality(60) // set JPEG quality
+                .write('images/'+newImgName); // save
+                let rs = Fs.createReadStream(imgPath)
+                res.attachment(newImgName)
+                rs.pipe(res)
+                res.status(200).send('Download succesfull!');
+            }).catch(err =>{
+                console.log(err)
+            })
+        }
 
         return this.router;
     }
