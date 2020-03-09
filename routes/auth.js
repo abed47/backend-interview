@@ -57,7 +57,7 @@ class Auth{
             res.status(200).send("logged in");
         });
 
-        this.router.post('/register', verifyToken , async (req,res) => {
+        this.router.post('/register', async (req,res) => {
 
             /**
              * 
@@ -106,7 +106,7 @@ class Auth{
              }
         });
 
-        this.router.post('/resize', async (req,res) => {
+        this.router.post('/resize', verifyToken, async (req,res) => {
             const url = req.body.imgUrl
             const imgName = new Date().getTime().toString()
             const path = Path.resolve(__dirname, '../images', imgName+'.png')

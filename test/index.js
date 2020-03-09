@@ -50,6 +50,7 @@ describe('POST /api/user/resize',() => {
         chai.request(app)
         .post('/api/user/resize')
         .send({imgUrl: "https://miro.medium.com/max/2400/1*LSYdlwkdqEQSA-p19HGF7Q.jpeg"})
+        .set('auth-token','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTYzYzY3NzJlM2Q5YjUxM2M3OTljNTEiLCJpYXQiOjE1ODM2MTY2Nzh9.1krVfXNEysdjrI_AauMCjFnNHB-yt5LAFkOxPB1M9DE')
         .then(res => {
             expect(res).to.have.status(200);
             expect(res.header['Content-Type']).to.be.eql('image/png')

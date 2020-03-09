@@ -6,8 +6,8 @@ function auth(req,res,next){
 
     try{
         const verified = jwt.verify(token,process.env.TOKEN_SECRET);
-        req.user = verified;
-        res.header('auth-token');
+        res.header('auth-token',token);
+        res.header('user',verified);
         next();
     }catch(err){
         res.status(400).send("Access denied");
