@@ -7,7 +7,7 @@ const axios = require('axios');
 const Fs = require('fs');
 const Path = require('path');
 const Jimp = require('jimp');
-
+const verifyToken = require('./verifyToken');
 dotenv.config();
 
 class Auth{
@@ -57,7 +57,7 @@ class Auth{
             res.status(200).send("logged in");
         });
 
-        this.router.post('/register', async (req,res) => {
+        this.router.post('/register', verifyToken , async (req,res) => {
 
             /**
              * 
