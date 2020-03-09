@@ -8,8 +8,16 @@ const Fs = require('fs');
 const Path = require('path');
 const Jimp = require('jimp');
 const verifyToken = require('./verifyToken');
+
+//dotenv init
 dotenv.config();
 
+/**
+ * 
+ * @param {*} expressApp - express app instance
+ * 
+ * @returns express.Router() object to init in the importing file
+ */
 class Auth{
     constructor(expressApp){
         this.router = expressApp.Router();
@@ -107,10 +115,18 @@ class Auth{
         });
 
         this.router.post('/resize', verifyToken, async (req,res) => {
+            //assigning constants
             const url = req.body.imgUrl
             const imgName = new Date().getTime().toString()
             const path = Path.resolve(__dirname, '../images', imgName+'.png')
             const writer = Fs.createWriteStream(path)
+
+            /**
+             * 
+             * http get request to get image from the provided url
+             * and saving it after done
+             * 
+             */
             axios.get(url,{responseType: 'stream'}).then( response => {
                 response.data.pipe(writer)
                 writer.on('open', () => {console.log('writing')})
@@ -120,6 +136,13 @@ class Auth{
             }) 
         });
 
+        /**
+         * 
+         * @param {*} res - response object, used to set response
+         * @param {*} path - image path
+         * 
+         * @returns response
+         */
         function onWritingDone(res,path){
             let newImgName = new Date().getTime().toString() +"150x150.png"
             const imgPath = Path.resolve(__dirname, '../images',newImgName);
