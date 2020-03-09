@@ -31,5 +31,4 @@ describe("VALIDATIONS",  () => {
         expect(result).to.contain.property('value');
         expect(result).not.to.contain.property('error');
     })
-
 })
