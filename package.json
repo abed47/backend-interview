@@ -4,7 +4,7 @@
   "description": "node js with jwt auth",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node index.js",
     "test": "mocha --recursive --exit"
   },
   "repository": {
