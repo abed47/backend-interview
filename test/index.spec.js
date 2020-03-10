@@ -6,11 +6,11 @@ const chaiJwt = require('chai-jwt');
 chai.use(chaiHttp)
 chai.use(chaiJwt)
 const expect = chai.expect;
-/*
+
 describe('POST /api/user/register', () => {
     it('it should register a new user', done => {
         chai.request(app).post('/api/user/register')
-        .send({fullname: "test full name",user_name: "testusamedsd155",password:"testpassword",date: "1583704927"})
+        .send({fullname: "test full name",user_name: "testusername55",password:"testpassword",date: "1583704927"})
         .then(res => {
             const body = res.body;
             expect(body).to.contain.property('_id');
@@ -26,7 +26,7 @@ describe('POST /api/user/register', () => {
         })
     });
 });
-*/
+
 describe('POST /api/user/login',() => {
     it('it should login and return auth token', done => {
         chai.request(app)
