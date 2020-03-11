@@ -4,9 +4,9 @@ const joy = require('@hapi/joi');
  * 
  * async function to validate user input
  * 
- * @param {*} data - data needed to be validated
+ * @param {{fullname: string, user_name: string, password: string, data: number}} data - data needed to be validated
  * 
- * @returns Joi object should only contain vlues, and error property if any error
+ * @returns {object} - Joi object should only contain vlues, and error property if any error
  * 
  */
 const registerValidation = async (data) => {
@@ -25,9 +25,9 @@ const registerValidation = async (data) => {
  * 
  * async function to validate user input
  * 
- * @param {*} data - data needed to be validated
+ * @param {{user_name: string, password: string}} data - data needed to be validated
  * 
- * @returns Joi object should only contain vlues, and error property if any error
+ * @returns {object} - Joi object should only contain vlues, and error property if any error
  * 
  */
 const loginValidation = async (data) => {

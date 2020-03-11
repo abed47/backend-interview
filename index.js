@@ -27,7 +27,7 @@ app.use(express.json());
 /**
  * creates middleware for the auth route
  * 
- * @param - middleware
+ * @param {Function} - middleware
  * 
  * @param - routes init from auth class
  * 

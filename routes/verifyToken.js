@@ -5,12 +5,13 @@ const jwt = require('jsonwebtoken');
  * request object should contain auth-token header in order for the
  * request to be successful
  * 
- * @param {*} req - request object
- * @param {*} res - response body
- * @param {*} next - callback function
+ * @param {object} req - request object
+ * @param {object} res - response body
+ * @param {Function} next - callback function
  * 
  * @callback next() if request is valid
  * 
+ * @returns {void}
  */
 function auth(req,res,next){
     //assigning auth-token to a variable
